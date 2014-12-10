@@ -1,10 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="TasksApp">
     <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Best TODO list evah</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="js/libs/angular.js/angular.js"></script>
+        <script src="js/libs/jquery/jquery.js"></script>
+        <script src="js/libs/twitter-bootstrap/js/bootstrap.js"></script>
+        <script src="js/todos.js"></script>
+        <link rel="stylesheet" type="text/css" href="js/libs/twitter-bootstrap/css/bootstrap.css"/>
     </head>
-    <body>
-        <h1>Hello World!</h1>
+    <body ng-controller="TasksController" class="container">
+        <h1>Muoviti a farlo!</h1>
+        <div class="row">
+            <div class="col-xs-1">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#newtaskdialog">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="col-xs-11">
+                <label for="searchbox" style="display: none">Trova</label>
+                <input ng-model="search" class="form-control" id="searchbox" placeholder="Trova..."/>
+            </div>
+        </div>
+        <hr/>
+        <article ng-repeat="task in tasks | filter:search">
+            <h2>{{task.title}}</h2>
+            <p>{{task.body}}</p>
+        </article>
+        <p ng-show="tasks.length == 0">
+            Wowowo, nulla da fare!
+        </p>
+        <div class="modal fade" id="newtaskdialog" role="dialog" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <form ng-submit="create()" class="modal-content" role="form">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Nuovo Task</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Cosa?" ng-model="title"/>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="6" class="form-control" ng-model="body"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
+                        <input type="submit" class="btn btn-primary" value="Facciamolo!"/>
+                    </div>
+                </form>
+            </div>
+        </div>
     </body>
 </html>
