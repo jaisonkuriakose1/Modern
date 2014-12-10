@@ -1,25 +1,49 @@
 package org.poul.modern;
 
+import java.util.ArrayList;
 import org.poul.modern.entities.Task;
 import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 @Stateless
 public class TasksManager {
-    public Collection<Task> getAll() {
-        return em
+    @PersistenceContext private EntityManager em;
+
+    public Collection<TaskDTO> getAll() {
+        Collection<Task> tasks = em
             .createNamedQuery("Task.findAll")
             .getResultList();
+        
+        Collection<TaskDTO> ts = new ArrayList<>();
+        for (Task t: tasks) {
+            ts.add(new TaskDTO(t));
+        }
+        return ts;
+    }
+    
+    public TaskDTO add(String title, String body) {
+        Task task = new Task(title, slugify(title));
+        task.setBody(body);
+        em.persist(task);
+        return new TaskDTO(task);
     }
 
-    public Task getByID(Integer id) {
-        return (Task) em
-            .createNamedQuery("Task.findByIdTask")
-            .setParameter("idTask", id)
-            .getSingleResult();
+    public TaskDTO getByID(Integer id) {
+        try {
+            Task t = em
+                .createNamedQuery("Task.findByIdTask", Task.class)
+                .setParameter("idTask", id)
+                .getSingleResult();
+            return new TaskDTO(t);
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
-    @PersistenceContext EntityManager em;
+    private String slugify(String title) {
+        return title.toLowerCase().replace(' ', '-');
+    }
 }
