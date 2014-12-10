@@ -1,10 +1,8 @@
 package org.poul.modern;
 
-import org.poul.modern.entities.Task;
 import java.util.Collection;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
