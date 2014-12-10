@@ -39,6 +39,9 @@ public class Task implements Serializable {
     @Column(name = "done")
     private Boolean done;
 
+    public Task () {
+    }
+    
     public Task(String title, String slug) {
         this.idTask = null;
         this.title = title;
