@@ -1,5 +1,6 @@
 package org.poul.modern;
 
+import org.poul.modern.entities.Task;
 import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

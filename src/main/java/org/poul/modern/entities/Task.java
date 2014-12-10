@@ -1,4 +1,4 @@
-package org.poul.modern;
+package org.poul.modern.entities;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
