@@ -117,6 +117,6 @@ public class Task implements Serializable {
 
     @Override
     public String toString() {
-        return "org.poul.modern.Task[ idTask=" + idTask + " ]";
+        return "Task<" + title + ">";
     }
 }
