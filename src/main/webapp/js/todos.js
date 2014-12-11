@@ -1,3 +1,5 @@
+(function() {
+
 var tasksApp = angular.module("TasksApp", []);
 
 tasksApp.controller("TasksController", function ($scope, $http, $log) {
@@ -26,3 +28,5 @@ tasksApp.controller("TasksController", function ($scope, $http, $log) {
         });
     }
 });
+
+})();
