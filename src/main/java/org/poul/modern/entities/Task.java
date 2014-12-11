@@ -1,5 +1,12 @@
 package org.poul.modern.entities;
 
+/*
+ * Copyright (c) 2014, Stefano Sanfilippo
+ * All rights reserved.
+ *
+ * BSD licensed. See LICENSE.txt for more information.
+ */
+
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;

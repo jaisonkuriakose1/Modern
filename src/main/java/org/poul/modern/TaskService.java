@@ -1,5 +1,12 @@
 package org.poul.modern;
 
+/*
+ * Copyright (c) 2014, Stefano Sanfilippo
+ * All rights reserved.
+ *
+ * BSD licensed. See LICENSE.txt for more information.
+ */
+
 import java.util.Collection;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

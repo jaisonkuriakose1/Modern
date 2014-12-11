@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2014, Stefano Sanfilippo
+ * All rights reserved.
+ *
+ * BSD licensed. See LICENSE.txt for more information.
+ */
+
 (function() {
 
 var tasksApp = angular.module("TasksApp", []);
